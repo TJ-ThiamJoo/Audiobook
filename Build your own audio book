@@ -1,0 +1,15 @@
+import pyttsx3, pdfplumber
+
+speaker = pyttsx3.init()
+
+pdf = pdfplumber.open("Steve Jobs.pdf")   # remember to move a pdf file into the same folder of the project.
+for num in range(20, 645):       # 1. For loop to let the audio can start from the page 21 to 645.
+    page = pdf.pages[num].extract_text()       # 2. Get the number of the page.  #3. Extract the text from the pdf file.
+    speaker.say(page)           # 4. Use the say method to  speak for the pdf file and run the project.
+    speaker.runAndWait()
+speaker.stop()
+
+
+#Optionally, you can modify the speaking rate with below method.
+#rate = speaker.getProperty('rate')   # getting details of current speaking rate
+#speaker.setProperty('rate', 185)     # setting up new voice rate
